@@ -1,0 +1,40 @@
+- name: Install pyenv requirements
+  become: true
+  package:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+  - git
+  - make
+  - build-essential
+  - libssl-dev
+  - zlib1g-dev
+  - libbz2-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - wget
+  - curl
+  - llvm
+  - libncurses5-dev
+  - libncursesw5-dev
+  - xz-utils
+  - tk-dev
+  - libffi-dev
+  - liblzma-dev
+  - python-openssl
+- name: Install pyenv
+  shell: >
+      curl https://pyenv.run | bash
+  args:
+    warn: false
+- name: Add pyenv to .bash_config
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.bash_config"
+    block: |
+      export PATH="/home/spowell/.pyenv/bin:$PATH"
+      eval "$(pyenv init -)"
+      eval "$(pyenv virtualenv-init -)"
+- name: Load pyenv bash settings
+  shell: . "{{ ansible_env.HOME }}/.bash_config" && pyenv install 3.7.4
+  # shell: pyenv install 2.7.16

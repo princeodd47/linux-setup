@@ -6,4 +6,4 @@
     warn: false
 - name: Install node
   shell: >
-    /bin/bash -c "source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install node"
+    /bin/bash -c "source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install 12.11.1"

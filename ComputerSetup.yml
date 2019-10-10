@@ -4,5 +4,5 @@
   tasks:
    - include: ./playbooks/CoreSetup.yml
    # - include: ./playbooks/DockerSetup.yml
-   # - include: ./playbooks/Extras.yml
+   - include: ./playbooks/Extras.yml
    # - include: ./playbooks/Dotfiles.yml
