@@ -1,3 +1,6 @@
-#vim swap files
+# vim swap files
 *.swp
 *.swo
+
+# ansible retry files
+*.retry
