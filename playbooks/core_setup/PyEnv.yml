@@ -35,6 +35,8 @@
       export PATH="/home/spowell/.pyenv/bin:$PATH"
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
-- name: Load pyenv bash settings
-  shell: . "{{ ansible_env.HOME }}/.bash_config" && pyenv install 3.7.4
-  # shell: pyenv install 2.7.16
+- name: Install Python
+  shell: |
+      . "{{ ansible_env.HOME }}/.bash_config"
+      pyenv install 3.7.4
+      pyenv install 2.7.16
