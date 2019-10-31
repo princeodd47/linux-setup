@@ -10,6 +10,10 @@
   - silversearcher-ag
   - tmux
   - vim
+- name: Create bash_config file
+  file:
+      path: "{{ ansible_env.HOME }}/.bash_config"
+      state: touch
 - name: Add bash_config to bashrc
   blockinfile:
     path: "{{ ansible_env.HOME }}/.bashrc"

@@ -7,4 +7,4 @@
   become: true
   apt:
     deb: https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-musl_0.12.1_amd64.deb
-  when: bat_not_exists
+  when: bat_not_exists == True
