@@ -34,14 +34,6 @@
       curl https://pyenv.run | bash
   args:
     warn: false
-- name: Add pyenv to .bash_config
-  when: not pyenv_dir.stat.exists
-  blockinfile:
-    path: "{{ ansible_env.HOME }}/.bash_config"
-    block: |
-      export PATH="/home/spowell/.pyenv/bin:$PATH"
-      eval "$(pyenv init -)"
-      eval "$(pyenv virtualenv-init -)"
 - name: Install Python
   when: not pyenv_dir.stat.exists
   shell: |

@@ -1,5 +1,10 @@
 - name: Install diff-so-fancy
-  npm:
-    name: diff-so-fancy
-    global: yes
-    executable: "{{ ansible_env.HOME }}/.nvm/versions/node/v12.11.1/bin/npm"
+  shell: |
+    . "{{ ansible_env.HOME }}/.bash_config"
+    "{{ ansible_env.HOME }}/.nvm/versions/node/v12.11.1/bin/npm install diff-so-fancy"
+  # npm:
+  #   name: diff-so-fancy
+  #   global: yes
+  #   executable: |
+  #     . "{{ ansible_env.HOME }}/.bash_config"
+  #     "{{ ansible_env.HOME }}/.nvm/versions/node/v12.11.1/bin/npm"

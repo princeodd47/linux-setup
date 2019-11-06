@@ -1,0 +1,12 @@
+- name: Check for existing dotfiles repo
+  stat:
+    path: "{{ ansible_env.HOME }}/.dotfiles"
+  register: dotfiles
+- name: Clone dotfiles
+  shell: |
+      git clone https://github.com/princeodd47/dotfiles.git {{ ansible_env.HOME }}/.dotfiles
+  when: not dotfiles.stat.exists
+- name: Install dotfiles
+  shell: |
+    "{{ ansible_env.HOME}}/.dotfiles/install"
+  when: not dotfiles.stat.exists
