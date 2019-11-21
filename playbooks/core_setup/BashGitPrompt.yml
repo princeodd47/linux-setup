@@ -1,0 +1,8 @@
+- name: Check for existing bash-git-prompt
+  stat:
+    path: "{{ ansible_env.HOME }}/.bash-git-prompt"
+  register: git_prompt
+- name: Install bash-git-prompt
+  shell: |
+    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+  when: not git_prompt.stat.exists

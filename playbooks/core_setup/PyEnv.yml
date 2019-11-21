@@ -1,0 +1,42 @@
+- name: Check if .pyenv directory exists
+  stat:
+      path: "{{ ansible_env.HOME }}/.pyenv"
+  register: pyenv_dir
+- name: Install pyenv requirements
+  when: not pyenv_dir.stat.exists
+  become: true
+  package:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+  - git
+  - make
+  - build-essential
+  - libssl-dev
+  - zlib1g-dev
+  - libbz2-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - wget
+  - curl
+  - llvm
+  - libncurses5-dev
+  - libncursesw5-dev
+  - xz-utils
+  - tk-dev
+  - libffi-dev
+  - liblzma-dev
+  - python-openssl
+- name: Install pyenv
+  when: not pyenv_dir.stat.exists
+  shell: >
+      curl https://pyenv.run | bash
+  args:
+    warn: false
+- name: Install Python
+  when: not pyenv_dir.stat.exists
+  shell: |
+      . "{{ ansible_env.HOME }}/.bash_config"
+      pyenv install 3.7.4
+      pyenv install 2.7.16
