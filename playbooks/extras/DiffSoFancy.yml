@@ -1,10 +1,8 @@
-- name: Install diff-so-fancy
+- name: Check for existing diff-so-fancy repo
+  stat:
+    path: "{{ ansible_env.HOME }}/.diff-so-fancy"
+  register: diffsofancy
+- name: Clone diff-so-fancy
   shell: |
-    . "{{ ansible_env.HOME }}/.bash_config"
-    "{{ ansible_env.HOME }}/.nvm/versions/node/v12.11.1/bin/npm install diff-so-fancy"
-  # npm:
-  #   name: diff-so-fancy
-  #   global: yes
-  #   executable: |
-  #     . "{{ ansible_env.HOME }}/.bash_config"
-  #     "{{ ansible_env.HOME }}/.nvm/versions/node/v12.11.1/bin/npm"
+      git clone https://github.com/so-fancy/diff-so-fancy.git {{ ansible_env.HOME }}/.diff-so-fancy
+  when: not diffsofancy.stat.exists

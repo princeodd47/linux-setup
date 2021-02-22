@@ -18,6 +18,5 @@
           . ~/.bash_config
       fi
 - include: ./core_setup/BashGitPrompt.yml
-- include: ./core_setup/NVM.yml
 - include: ./core_setup/Dotfiles.yml
 - include: ./core_setup/PyEnv.yml
