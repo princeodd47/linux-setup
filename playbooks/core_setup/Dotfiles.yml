@@ -6,6 +6,10 @@
   shell: |
       git clone https://github.com/princeodd47/dotfiles.git {{ ansible_env.HOME }}/.dotfiles
   when: not dotfiles.stat.exists
+- name: Create .config directory for flake8 config file
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
 - name: Install dotfiles
   shell: |
     "{{ ansible_env.HOME}}/.dotfiles/install"
