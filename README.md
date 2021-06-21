@@ -2,7 +2,7 @@
 Deploy development environment to a target system.
 
 ## Prerequisites
-This repo assumes the target has an SSH server installed and has password authentication has been enabled.
+This repo assumes the target has an SSH server installed and password authentication has been enabled.
 
 Enable password authentication on sshd
 ```
@@ -32,7 +32,7 @@ Python Packages
 Installing prerequisites
 ```
 sudo apt-get update
-sudo apt-install make python3-pip sshpass
+sudo apt-get install make python3-pip sshpass
 pip3 install ansible
 ```
 
