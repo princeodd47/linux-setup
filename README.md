@@ -6,7 +6,7 @@ This repo assumes the target has an SSH server installed and has password authen
 
 Enable password authentication on sshd
 ```
-sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/' sshd_config
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 ```
 
 Restart sshd
@@ -33,7 +33,7 @@ Installing prerequisites
 ```
 sudo apt-get update
 sudo apt-install make python3-pip sshpass
-pip install ansible
+pip3 install ansible
 ```
 
 ## Setup
