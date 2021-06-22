@@ -41,3 +41,16 @@ Setting up environment
 ```
 make TARGET_IP=127.0.0.1 setup
 ```
+
+## Post Setup Changes
+Add this to `.bashrc`.
+```
+eval "$(pyenv init -)"
+```
+
+Add this to `.profile` before importing `.bash_profile`.
+```
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+```

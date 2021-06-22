@@ -38,5 +38,6 @@
   when: not pyenv_dir.stat.exists
   shell: |
       . "{{ ansible_env.HOME }}/.bash_config"
+      pyenv install 3.8.10
       pyenv install 3.7.4
       pyenv install 2.7.16
