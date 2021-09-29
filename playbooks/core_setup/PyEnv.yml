@@ -40,4 +40,7 @@
       . "{{ ansible_env.HOME }}/.bash_config"
       pyenv install 3.8.10
       pyenv install 3.7.4
-      pyenv install 2.7.16
+      pyenv install 2.7.18
+- name: Set global Python verion
+  ansible.builtin.shell:
+    cmd:  pyenv global 3.8.10
