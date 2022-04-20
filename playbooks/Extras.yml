@@ -1,2 +1,2 @@
-- include: ./extras/Bat.yml
-- include: ./extras/DiffSoFancy.yml
+- include_tasks: ./extras/Bat.yml
+- include_tasks: ./extras/DiffSoFancy.yml

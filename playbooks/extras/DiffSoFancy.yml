@@ -1,5 +1,5 @@
 - name: Check for existing diff-so-fancy repo
-  stat:
+  ansible.builtin.stat:
     path: "{{ ansible_env.HOME }}/.diff-so-fancy"
   register: diffsofancy
 - name: Clone diff-so-fancy

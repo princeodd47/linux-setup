@@ -1,5 +1,5 @@
 - name: Install Bat
   become: true
-  apt:
+  ansible.builtin.apt:
     deb: https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-musl_0.12.1_amd64.deb
     state: present

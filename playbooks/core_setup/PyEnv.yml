@@ -1,46 +1,50 @@
+- name: Install pyenv requirements
+  become: true
+  ansible.builtin.package:
+    name:
+      - git
+      - make
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - wget
+      - curl
+      - llvm
+      - libncurses5-dev
+      - libncursesw5-dev
+      - xz-utils
+      - tk-dev
+      - libffi-dev
+      - liblzma-dev
+      - python-openssl
+    state: latest
+    update_cache: yes
 - name: Check if .pyenv directory exists
   stat:
       path: "{{ ansible_env.HOME }}/.pyenv"
   register: pyenv_dir
-- name: Install pyenv requirements
+- name: Clone pyenv
   when: not pyenv_dir.stat.exists
-  become: true
-  package:
-    name: "{{ item }}"
-    state: latest
-    update_cache: yes
-  with_items:
-  - git
-  - make
-  - build-essential
-  - libssl-dev
-  - zlib1g-dev
-  - libbz2-dev
-  - libreadline-dev
-  - libsqlite3-dev
-  - wget
-  - curl
-  - llvm
-  - libncurses5-dev
-  - libncursesw5-dev
-  - xz-utils
-  - tk-dev
-  - libffi-dev
-  - liblzma-dev
-  - python-openssl
+  shell: >
+      git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  args:
+    warn: false
 - name: Install pyenv
   when: not pyenv_dir.stat.exists
   shell: >
-      curl https://pyenv.run | bash
+      cd ~/.pyenv && src/configure && make -C src
   args:
     warn: false
 - name: Install Python
   when: not pyenv_dir.stat.exists
   shell: |
       . "{{ ansible_env.HOME }}/.bash_config"
-      pyenv install 3.8.10
-      pyenv install 3.7.4
-      pyenv install 2.7.18
+      /home/spowell/.pyenv/bin/pyenv install 3.8.10
+      /home/spowell/.pyenv/bin/pyenv install 3.7.4
+      /home/spowell/.pyenv/bin/pyenv install 2.7.18
 - name: Set global Python verion
   ansible.builtin.shell:
-    cmd:  pyenv global 3.8.10
+    cmd:  /home/spowell/.pyenv/bin/pyenv global 3.8.10

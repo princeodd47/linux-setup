@@ -2,6 +2,6 @@
 - name: Setup Computer
   hosts: "{{ target_ip }}"
   tasks:
-    - include: ./playbooks/CoreSetup.yml
-    - include: ./playbooks/DockerSetup.yml
-    - include: ./playbooks/Extras.yml
+    - include_tasks: ./playbooks/CoreSetup.yml
+    - include_tasks: ./playbooks/DockerSetup.yml
+    - include_tasks: ./playbooks/Extras.yml
