@@ -48,3 +48,13 @@
 - name: Set global Python verion
   ansible.builtin.shell:
     cmd:  /home/spowell/.pyenv/bin/pyenv global 3.8.10
+- name: Check if pyenv-virutalenv directory exists
+  stat:
+      path: "{{ ansible_env.HOME }}/.pyenv/plugins/pyenv-virtualenv"
+  register: pyenv_virtualenv_dir
+- name: Clone pyenv
+  when: not pyenv_virtualenv_dir.stat.exists
+  shell: >
+      git clone https://github.com/pyenv/pyenv-virtualenv.git "{{ ansible_env.HOME }}/.pyenv/plugins/pyenv-virtualenv"
+  args:
+    warn: false
