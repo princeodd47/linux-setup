@@ -5,6 +5,9 @@
 - name: Install NeoVim
   become: true
   ansible.builtin.package:
-    name: neovim
+    name:
+      - neovim
+      - nodejs
+      - npm
     state: latest
     update_cache: yes

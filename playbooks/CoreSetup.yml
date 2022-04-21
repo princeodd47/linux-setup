@@ -6,8 +6,9 @@
       - htop
       - silversearcher-ag
       - tmux
-      - vim
+      - tree
       - unzip
+      - vim
     state: latest
     update_cache: yes
 - name: Add bash_config to bashrc
@@ -18,7 +19,8 @@
           . ~/.bash_config
       fi
 - include_tasks: ./core_setup/BashGitPrompt.yml
-- include_tasks: ./core_setup/NeoVim.yml
 - include_tasks: ./core_setup/Dotfiles.yml
+- include_tasks: ./core_setup/NeoVim.yml
+- include_tasks: ./core_setup/NVM.yml
 - include_tasks: ./core_setup/PyEnv.yml
 - include_tasks: ./core_setup/Poetry.yml
