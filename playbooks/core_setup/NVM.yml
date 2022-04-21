@@ -7,3 +7,10 @@
 - name: Install node
   ansible.builtin.shell: >
     /bin/bash -c "source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install 16.14.2"
+- name: Install NVM packages
+  become: true
+  ansible.builtin.package:
+    name:
+      - npm
+    state: latest
+    update_cache: yes
