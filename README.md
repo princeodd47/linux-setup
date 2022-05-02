@@ -61,3 +61,8 @@ Add Python folding support for nvim-treesitter.
 nvim
 :TSInstall python
 ```
+
+Remove keymapping for ctrl+k from lsp-zero
+```
+sed -i "s/map('n', '<C-k>', lsp 'buf.signature_help()')/-- map('n', '<C-k>', lsp 'buf.signature_help()')/" ~/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim/lua/lsp-zero/server.lua
+```
